@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empanadas Las Zapata | Pedidos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .product-card { transition: transform 0.2s; }
+        .product-card:active { transform: scale(0.98); }
+        #subscription-status { display: none; } /* Control de suscripción invisible */
+    </style>
+</head>
+<body class="bg-gray-50 font-sans pb-24">
+
+    <header class="bg-yellow-400 p-6 rounded-b-3xl shadow-lg text-center">
+        <div class="w-32 h-32 bg-white rounded-full mx-auto flex items-center justify-center border-4 border-yellow-600 mb-4 overflow-hidden">
+             <img src="https://img.freepik.com/vector-premium/empanada-dibujada-mano-logotipo-empanada-colombiana-o-argentina_605910-388.jpg" alt="Logo" class="w-24">
+        </div>
+        <h1 class="text-2xl font-bold text-gray-800 uppercase tracking-wider">Empanadas Las Zapata</h1>
+        <p class="text-sm text-yellow-900 italic">"El sabor de nuestra tradición"</p>
+    </header>
+
+    <main class="p-4 max-w-md mx-auto">
+        
+        <div id="product-list" class="space-y-4">
+            <div class="product-card bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4 border border-gray-100">
+                <img src="https://images.unsplash.com/photo-1628102422619-ec85368a4947?auto=format&fit=crop&q=80&w=150" class="w-20 h-20 rounded-xl object-cover">
+                <div class="flex-1">
+                    <h3 class="font-bold text-gray-800">Empanada de Carne</h3>
+                    <p class="text-xs text-gray-500">Crujiente y deliciosa</p>
+                    <p class="text-yellow-600 font-bold mt-1">$<span class="price">1</span></p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="changeQty('p1', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xl">-</button>
+                    <span id="p1-qty" class="font-bold w-4 text-center">0</span>
+                    <button onclick="changeQty('p1', 1)" class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xl">+</button>
+                </div>
+            </div>
+
+            <div class="product-card bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4 border border-gray-100">
+                <img src="https://images.unsplash.com/photo-1541518763669-279f00edc990?auto=format&fit=crop&q=80&w=150" class="w-20 h-20 rounded-xl object-cover">
+                <div class="flex-1">
+                    <h3 class="font-bold text-gray-800">Empanada de Pollo</h3>
+                    <p class="text-xs text-gray-500">Sabor casero</p>
+                    <p class="text-yellow-600 font-bold mt-1">$<span class="price">1</span></p>
+                </div>
+                <div class="flex items-center gap-2">
+                    <button onclick="changeQty('p2', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xl">-</button>
+                    <span id="p2-qty" class="font-bold w-4 text-center">0</span>
+                    <button onclick="changeQty('p2', 1)" class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xl">+</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8 p-4 bg-gray-100 rounded-2xl text-sm text-gray-600 border-l-4 border-yellow-400">
+            <p><i class="fas fa-map-marker-alt text-yellow-600 mr-2"></i> Calle 21, Caucasia, Antioquia</p>
+            <p class="mt-1"><i class="fas fa-phone-alt text-yellow-600 mr-2"></i> 3206942230</p>
+        </div>
+
+    </main>
+
+    <footer class="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
+        <div class="max-w-md mx-auto">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-gray-500 font-medium">Subtotal:</span>
+                <span id="total-val" class="text-2xl font-black text-gray-800">$0</span>
+            </div>
+            <button onclick="sendOrder()" class="w-full bg-green-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-200 active:bg-green-600">
+                <i class="fab fa-whatsapp text-2xl"></i>
+                HACER PEDIDO (WhatsApp)
+            </button>
+            <p class="text-[10px] text-center mt-3 text-gray-400 uppercase tracking-widest">
+                Desarrollada por **Vibras Positivas** &copy; 2026 <br> Derechos Reservados
+            </p>
+        </div>
+    </footer>
+
+    <div id="subscription-status" data-expiry="2027-02-11"></div>
+
+    <script>
+        const products = {
+            p1: { name: "Empanada de Carne", qty: 0, price: 1 },
+            p2: { name: "Empanada de Pollo", qty: 0, price: 1 }
+        };
+
+        function changeQty(id, delta) {
+            products[id].qty = Math.max(0, products[id].qty + delta);
+            document.getElementById(id + '-qty').innerText = products[id].qty;
+            updateTotal();
+        }
+
+        function updateTotal() {
+            let total = 0;
+            for (let key in products) {
+                total += products[key].qty * products[key].price;
+            }
+            document.getElementById('total-val').innerText = '$' + total;
+        }
+
+        function sendOrder() {
+            // Verificar expiración (Suscripción invisible)
+            const expiryStr = document.getElementById('subscription-status').dataset.expiry;
+            const expiryDate = new Date(expiryStr);
+            const today = new Date();
+            
+            if (today > expiryDate) {
+                alert("La suscripción de la aplicación ha vencido. Contacte a Vibras Positivas.");
+                return;
+            }
+
+            let message = "📝 *ORDEN DE PEDIDO - EMPANADAS LAS ZAPATA*\n";
+            message += "---------------------------------\n";
+            let hasItems = false;
+            let total = 0;
+
+            for (let key in products) {
+                if (products[key].qty > 0) {
+                    message += `📍 ${products[key].name} x ${products[key].qty} = $${products[key].qty * products[key].price}\n`;
+                    total += products[key].qty * products[key].price;
+                    hasItems = true;
+                }
+            }
+
+            if (!hasItems) {
+                alert("¡Agrega al menos una empanada a tu pedido!");
+                return;
+            }
+
+            message += "---------------------------------\n";
+            message += `💰 *TOTAL A PAGAR: $${total}*\n\n`;
+            message += "📍 *Dirección:* Calle 21, Caucasia\n";
+            message += "✅ _Pedido generado por App Vibras Positivas_";
+
+            const phone = "573206942230";
+            const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
+            window.open(url, '_blank');
+        }
+    </script>
+</body>
+</html>
