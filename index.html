@@ -10,10 +10,9 @@
         .product-card { transition: transform 0.2s; }
         .product-card:active { transform: scale(0.96); }
         #subscription-status { display: none; }
-        input::placeholder { color: #9ca3af; font-size: 0.85rem; }
     </style>
 </head>
-<body class="bg-stone-50 font-sans pb-56">
+<body class="bg-stone-50 font-sans pb-64">
 
     <header class="bg-yellow-400 p-8 rounded-b-[3rem] shadow-xl text-center border-b-4 border-yellow-500">
         <div class="mx-auto mb-4 drop-shadow-md">
@@ -25,49 +24,46 @@
     <main class="p-4 max-w-md mx-auto -mt-6">
         
         <div class="bg-white p-6 rounded-[2rem] shadow-md mb-6 border border-yellow-100">
-            <h4 class="font-black text-gray-800 mb-4 uppercase text-xs tracking-widest flex items-center gap-2">
-                <i class="fas fa-user-edit text-yellow-600"></i> Datos para el Domicilio
+            <h4 class="font-black text-gray-800 mb-4 uppercase text-[10px] tracking-widest flex items-center gap-2">
+                <i class="fas fa-truck text-yellow-600"></i> Datos del Cliente
             </h4>
             <div class="space-y-3">
-                <input type="text" id="client-name" placeholder="Tu Nombre Completo" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-yellow-500 font-medium">
-                <input type="text" id="client-address" placeholder="Dirección de Entrega" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-yellow-500 font-medium">
-                <input type="tel" id="client-phone" placeholder="Teléfono / Celular" class="w-full p-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:border-yellow-500 font-medium">
+                <input type="text" id="client-name" placeholder="Nombre completo" class="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-yellow-500 text-sm">
+                <input type="text" id="client-address" placeholder="Dirección de entrega" class="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-yellow-500 text-sm">
+                <input type="tel" id="client-phone" placeholder="Celular de contacto" class="w-full p-3 bg-gray-50 border border-gray-100 rounded-xl focus:outline-none focus:border-yellow-500 text-sm">
             </div>
         </div>
 
         <div id="product-list" class="space-y-4">
             <div class="product-card bg-white p-4 rounded-3xl shadow-md flex items-center gap-4 border border-orange-100">
-                <img src="empanadas.JPG" class="w-20 h-20 rounded-2xl object-cover shadow-sm">
+                <img src="empanadas.JPG" class="w-20 h-20 rounded-2xl object-cover">
                 <div class="flex-1">
-                    <h3 class="font-black text-gray-800 text-md leading-tight">Empanadas Caseras</h3>
-                    <p class="text-orange-600 font-bold mt-1">$1.500</p>
+                    <h3 class="font-black text-gray-800 text-md">Empanadas</h3>
+                    <p class="text-orange-600 font-bold">$1.500</p>
                 </div>
                 <div class="flex flex-col items-center gap-1 bg-gray-50 p-2 rounded-2xl border border-gray-100">
                     <button onclick="changeQty('p1', 1)" class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-xl shadow-sm">+</button>
-                    <span id="p1-qty" class="font-black text-lg w-6 text-center text-gray-700">0</span>
+                    <span id="p1-qty" class="font-black text-lg w-6 text-center">0</span>
                     <button onclick="changeQty('p1', -1)" class="w-8 h-8 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-xl shadow-sm">-</button>
                 </div>
             </div>
 
             <div class="product-card bg-white p-4 rounded-3xl shadow-md flex items-center gap-4 border border-orange-100">
-                <img src="pastelitos-de-pollo.JPG" class="w-20 h-20 rounded-2xl object-cover shadow-sm">
+                <img src="pastelitos-de-pollo.JPG" class="w-20 h-20 rounded-2xl object-cover">
                 <div class="flex-1">
-                    <h3 class="font-black text-gray-800 text-md leading-tight">Pastelitos de Pollo</h3>
-                    <p class="text-orange-600 font-bold mt-1">$4.000</p>
+                    <h3 class="font-black text-gray-800 text-md">Pastelitos</h3>
+                    <p class="text-orange-600 font-bold">$4.000</p>
                 </div>
                 <div class="flex flex-col items-center gap-1 bg-gray-50 p-2 rounded-2xl border border-gray-100">
                     <button onclick="changeQty('p2', 1)" class="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center text-xl shadow-sm">+</button>
-                    <span id="p2-qty" class="font-black text-lg w-6 text-center text-gray-700">0</span>
+                    <span id="p2-qty" class="font-black text-lg w-6 text-center">0</span>
                     <button onclick="changeQty('p2', -1)" class="w-8 h-8 bg-white border border-gray-200 rounded-lg flex items-center justify-center text-xl shadow-sm">-</button>
                 </div>
             </div>
         </div>
 
-        <div class="mt-8 p-6 bg-yellow-50 rounded-[2rem] text-xs text-gray-600 border border-yellow-200">
-            <p class="flex items-center gap-3 mb-2 font-bold">
-                <i class="fas fa-store text-yellow-700"></i> PUNTO FÍSICO:
-            </p>
-            <p>Pista de patinaje, frente a La Estancia, Caucasia.</p>
+        <div class="mt-8 text-center text-[10px] text-gray-400 font-bold uppercase tracking-[0.3em]">
+            <p>Ubicación: Pista de Patinaje - Caucasia</p>
         </div>
 
     </main>
@@ -76,19 +72,22 @@
         <div class="max-w-md mx-auto">
             <div class="flex justify-between items-center mb-4 px-2">
                 <div>
-                    <span class="text-gray-400 text-[10px] font-black uppercase tracking-widest block">Total a Pagar</span>
+                    <span class="text-gray-400 text-[10px] font-black uppercase tracking-widest block text-left">Total</span>
                     <span id="total-val" class="text-3xl font-black text-gray-900">$0</span>
                 </div>
                 <div class="text-right">
-                    <span class="text-[9px] text-gray-400 font-bold uppercase block tracking-tighter">Powered by</span>
+                    <span class="text-[9px] text-gray-400 font-bold uppercase block">App desarrollada por</span>
                     <span class="text-sm font-black text-orange-500">Vibras Positivas</span>
                 </div>
             </div>
             
-            <button onclick="sendOrder()" class="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-green-200 transition-all active:scale-95 text-lg">
-                <i class="fab fa-whatsapp text-2xl"></i>
-                HACER PEDIDO
+            <button onclick="sendOrder()" class="w-full bg-green-500 hover:bg-green-600 text-white font-black py-4 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-green-200 transition-all active:scale-95 text-lg mb-2">
+                <i class="fab fa-whatsapp text-2xl"></i> PEDIR AHORA
             </button>
+            
+            <div class="text-center">
+                <p class="text-[9px] text-gray-400 font-bold">© 2026 TODOS LOS DERECHOS RESERVADOS</p>
+            </div>
         </div>
     </footer>
 
@@ -115,19 +114,19 @@
         }
 
         function sendOrder() {
-            // Control invisible de suscripción
+            // Verificación invisible de suscripción
             const expiryStr = document.getElementById('subscription-status').dataset.expiry;
             if (new Date() > new Date(expiryStr)) {
-                alert("Servicio temporalmente inactivo. Contacte a soporte de Vibras Positivas.");
+                alert("Licencia vencida. Contacte al desarrollador (Vibras Positivas).");
                 return;
             }
 
             const name = document.getElementById('client-name').value;
             const address = document.getElementById('client-address').value;
-            const phoneClient = document.getElementById('client-phone').value;
+            const phone = document.getElementById('client-phone').value;
 
-            if (!name || !address || !phoneClient) {
-                alert("Por favor, completa tus datos (Nombre, Dirección y Celular) para el domicilio.");
+            if (!name || !address || !phone) {
+                alert("Por favor completa los datos del cliente.");
                 return;
             }
 
@@ -137,30 +136,29 @@
 
             for (let key in products) {
                 if (products[key].qty > 0) {
-                    itemsText += `🔸 *${products[key].name}*\n    Cant: ${products[key].qty} | Sub: $${(products[key].qty * products[key].price).toLocaleString('es-CO')}\n`;
+                    itemsText += `🥟 *${products[key].name}*\n   Cant: ${products[key].qty} | Sub: $${(products[key].qty * products[key].price).toLocaleString('es-CO')}\n`;
                     total += products[key].qty * products[key].price;
                     hasItems = true;
                 }
             }
 
             if (!hasItems) {
-                alert("Agrega al menos un producto a tu carrito.");
+                alert("Selecciona al menos un producto.");
                 return;
             }
 
-            let message = `🧾 *ORDEN DE PEDIDO - LAS ZAPATA*\n`;
-            message += `==========================\n\n`;
+            let message = `🧾 *NUEVO PEDIDO - LAS ZAPATA*\n`;
+            message += `----------------------------\n`;
             message += `👤 *Cliente:* ${name}\n`;
             message += `📍 *Dirección:* ${address}\n`;
-            message += `📞 *Celular:* ${phoneClient}\n\n`;
-            message += `==========================\n`;
+            message += `📞 *Tel:* ${phone}\n`;
+            message += `----------------------------\n`;
             message += itemsText;
-            message += `\n==========================\n`;
+            message += `----------------------------\n`;
             message += `💰 *TOTAL A PAGAR: $${total.toLocaleString('es-CO')}*\n\n`;
-            message += `📲 _Generado por App Vibras Positivas_`;
+            message += `🚀 _App diseñada por Vibras Positivas_`;
 
-            const whatsappPhone = "573206942230";
-            window.open(`https://api.whatsapp.com/send?phone=${whatsappPhone}&text=${encodeURIComponent(message)}`, '_blank');
+            window.open(`https://api.whatsapp.com/send?phone=573206942230&text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
