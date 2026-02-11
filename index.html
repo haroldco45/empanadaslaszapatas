@@ -8,71 +8,90 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .product-card { transition: transform 0.2s; }
-        .product-card:active { transform: scale(0.98); }
-        #subscription-status { display: none; } /* Control de suscripción invisible */
+        .product-card:active { transform: scale(0.95); }
+        #subscription-status { display: none; }
     </style>
 </head>
-<body class="bg-gray-50 font-sans pb-24">
+<body class="bg-slate-50 font-sans pb-32">
 
-    <header class="bg-yellow-400 p-6 rounded-b-3xl shadow-lg text-center">
-        <div class="w-32 h-32 bg-white rounded-full mx-auto flex items-center justify-center border-4 border-yellow-600 mb-4 overflow-hidden">
-             <img src="https://img.freepik.com/vector-premium/empanada-dibujada-mano-logotipo-empanada-colombiana-o-argentina_605910-388.jpg" alt="Logo" class="w-24">
+    <header class="bg-yellow-400 p-8 rounded-b-[3rem] shadow-xl text-center border-b-4 border-yellow-500">
+        <div class="w-32 h-32 bg-white rounded-full mx-auto flex items-center justify-center border-4 border-gray-800 mb-4 overflow-hidden shadow-inner">
+             <img src="https://img.freepik.com/vector-premium/empanada-dibujada-mano-logotipo-empanada-colombiana-o-argentina_605910-388.jpg" alt="Logo Empanadas Las Zapata" class="w-24">
         </div>
-        <h1 class="text-2xl font-bold text-gray-800 uppercase tracking-wider">Empanadas Las Zapata</h1>
-        <p class="text-sm text-yellow-900 italic">"El sabor de nuestra tradición"</p>
+        <h1 class="text-3xl font-black text-gray-900 uppercase tracking-tighter">Empanadas Las Zapata</h1>
+        <p class="text-sm text-yellow-900 font-medium">¡Calidad y sabor en cada mordisco!</p>
     </header>
 
-    <main class="p-4 max-w-md mx-auto">
+    <main class="p-4 max-w-md mx-auto -mt-6">
         
         <div id="product-list" class="space-y-4">
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4 border border-gray-100">
-                <img src="https://images.unsplash.com/photo-1628102422619-ec85368a4947?auto=format&fit=crop&q=80&w=150" class="w-20 h-20 rounded-xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-bold text-gray-800">Empanada de Carne</h3>
-                    <p class="text-xs text-gray-500">Crujiente y deliciosa</p>
-                    <p class="text-yellow-600 font-bold mt-1">$<span class="price">1</span></p>
+            <div class="product-card bg-white p-4 rounded-2xl shadow-md flex items-center gap-4 border border-gray-100">
+                <div class="w-20 h-20 bg-yellow-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-bread-slice text-yellow-600 text-3xl"></i>
                 </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="changeQty('p1', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xl">-</button>
-                    <span id="p1-qty" class="font-bold w-4 text-center">0</span>
-                    <button onclick="changeQty('p1', 1)" class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xl">+</button>
+                <div class="flex-1">
+                    <h3 class="font-bold text-gray-800 text-lg">Empanada Tradicional</h3>
+                    <p class="text-xs text-gray-500">Receta original de la casa</p>
+                    <p class="text-green-600 font-bold mt-1">$<span class="price">1</span></p>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <button onclick="changeQty('p1', 1)" class="w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center text-2xl shadow-sm">+</button>
+                    <span id="p1-qty" class="font-black text-xl w-8 text-center">0</span>
+                    <button onclick="changeQty('p1', -1)" class="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-2xl shadow-sm">-</button>
                 </div>
             </div>
 
-            <div class="product-card bg-white p-4 rounded-2xl shadow-sm flex items-center gap-4 border border-gray-100">
-                <img src="https://images.unsplash.com/photo-1541518763669-279f00edc990?auto=format&fit=crop&q=80&w=150" class="w-20 h-20 rounded-xl object-cover">
-                <div class="flex-1">
-                    <h3 class="font-bold text-gray-800">Empanada de Pollo</h3>
-                    <p class="text-xs text-gray-500">Sabor casero</p>
-                    <p class="text-yellow-600 font-bold mt-1">$<span class="price">1</span></p>
+            <div class="product-card bg-white p-4 rounded-2xl shadow-md flex items-center gap-4 border border-gray-100">
+                <div class="w-20 h-20 bg-yellow-100 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-hotdog text-yellow-600 text-3xl"></i>
                 </div>
-                <div class="flex items-center gap-2">
-                    <button onclick="changeQty('p2', -1)" class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center text-xl">-</button>
-                    <span id="p2-qty" class="font-bold w-4 text-center">0</span>
-                    <button onclick="changeQty('p2', 1)" class="w-8 h-8 bg-yellow-400 rounded-full flex items-center justify-center text-xl">+</button>
+                <div class="flex-1">
+                    <h3 class="font-bold text-gray-800 text-lg">Empanada Especial</h3>
+                    <p class="text-xs text-gray-500">Con el toque de Las Zapata</p>
+                    <p class="text-green-600 font-bold mt-1">$<span class="price">1</span></p>
+                </div>
+                <div class="flex flex-col items-center gap-1">
+                    <button onclick="changeQty('p2', 1)" class="w-10 h-10 bg-yellow-400 rounded-lg flex items-center justify-center text-2xl shadow-sm">+</button>
+                    <span id="p2-qty" class="font-black text-xl w-8 text-center">0</span>
+                    <button onclick="changeQty('p2', -1)" class="w-10 h-10 bg-gray-200 rounded-lg flex items-center justify-center text-2xl shadow-sm">-</button>
                 </div>
             </div>
         </div>
 
-        <div class="mt-8 p-4 bg-gray-100 rounded-2xl text-sm text-gray-600 border-l-4 border-yellow-400">
-            <p><i class="fas fa-map-marker-alt text-yellow-600 mr-2"></i> Calle 21, Caucasia, Antioquia</p>
-            <p class="mt-1"><i class="fas fa-phone-alt text-yellow-600 mr-2"></i> 3206942230</p>
+        <div class="mt-8 p-5 bg-white rounded-3xl text-sm text-gray-700 shadow-sm border border-gray-100">
+            <h4 class="font-bold text-gray-900 mb-3 uppercase text-xs tracking-widest">Punto de Venta</h4>
+            <p class="flex items-start gap-3 mb-3">
+                <i class="fas fa-map-marker-alt text-red-500 mt-1"></i> 
+                <span>Calle 21, Pista de patinaje (al frente de La Estancia), Caucasia - Antioquia</span>
+            </p>
+            <p class="flex items-center gap-3">
+                <i class="fab fa-whatsapp text-green-500 text-lg"></i>
+                <span class="font-bold">320 694 2230</span>
+            </p>
         </div>
 
     </main>
 
-    <footer class="fixed bottom-0 left-0 right-0 bg-white p-4 shadow-[0_-5px_20px_rgba(0,0,0,0.05)] border-t border-gray-100">
+    <footer class="fixed bottom-0 left-0 right-0 bg-white p-5 shadow-[0_-10px_30px_rgba(0,0,0,0.1)] rounded-t-[2.5rem]">
         <div class="max-w-md mx-auto">
-            <div class="flex justify-between items-center mb-4">
-                <span class="text-gray-500 font-medium">Subtotal:</span>
-                <span id="total-val" class="text-2xl font-black text-gray-800">$0</span>
+            <div class="flex justify-between items-end mb-4 px-2">
+                <div>
+                    <span class="text-gray-400 text-xs font-bold uppercase block">Total Pedido</span>
+                    <span id="total-val" class="text-3xl font-black text-gray-900">$0</span>
+                </div>
+                <div class="text-right">
+                    <span class="text-[10px] text-gray-400 font-bold uppercase block tracking-tighter">Desarrollada por</span>
+                    <span class="text-sm font-bold text-yellow-600">Vibras Positivas</span>
+                </div>
             </div>
-            <button onclick="sendOrder()" class="w-full bg-green-500 text-white font-bold py-4 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-green-200 active:bg-green-600">
+            
+            <button onclick="sendOrder()" class="w-full bg-green-500 hover:bg-green-600 text-white font-black py-5 rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-green-100 transition-all active:scale-95">
                 <i class="fab fa-whatsapp text-2xl"></i>
-                HACER PEDIDO (WhatsApp)
+                ENVIAR PEDIDO AHORA
             </button>
-            <p class="text-[10px] text-center mt-3 text-gray-400 uppercase tracking-widest">
-                Desarrollada por **Vibras Positivas** &copy; 2026 <br> Derechos Reservados
+            
+            <p class="text-[9px] text-center mt-4 text-gray-400 uppercase font-medium">
+                © 2026 Todos los derechos reservados
             </p>
         </div>
     </footer>
@@ -81,8 +100,8 @@
 
     <script>
         const products = {
-            p1: { name: "Empanada de Carne", qty: 0, price: 1 },
-            p2: { name: "Empanada de Pollo", qty: 0, price: 1 }
+            p1: { name: "Empanada Tradicional", qty: 0, price: 1 },
+            p2: { name: "Empanada Especial", qty: 0, price: 1 }
         };
 
         function changeQty(id, delta) {
@@ -96,46 +115,43 @@
             for (let key in products) {
                 total += products[key].qty * products[key].price;
             }
-            document.getElementById('total-val').innerText = '$' + total;
+            document.getElementById('total-val').innerText = '$' + total.toLocaleString();
         }
 
         function sendOrder() {
-            // Verificar expiración (Suscripción invisible)
             const expiryStr = document.getElementById('subscription-status').dataset.expiry;
-            const expiryDate = new Date(expiryStr);
-            const today = new Date();
-            
-            if (today > expiryDate) {
-                alert("La suscripción de la aplicación ha vencido. Contacte a Vibras Positivas.");
+            if (new Date() > new Date(expiryStr)) {
+                alert("Servicio suspendido. Contacte al desarrollador (Vibras Positivas).");
                 return;
             }
 
-            let message = "📝 *ORDEN DE PEDIDO - EMPANADAS LAS ZAPATA*\n";
-            message += "---------------------------------\n";
             let hasItems = false;
             let total = 0;
+            let itemsText = "";
 
             for (let key in products) {
                 if (products[key].qty > 0) {
-                    message += `📍 ${products[key].name} x ${products[key].qty} = $${products[key].qty * products[key].price}\n`;
+                    itemsText += `🔸 *${products[key].name}*\n    Cant: ${products[key].qty} | Subt: $${products[key].qty * products[key].price}\n`;
                     total += products[key].qty * products[key].price;
                     hasItems = true;
                 }
             }
 
             if (!hasItems) {
-                alert("¡Agrega al menos una empanada a tu pedido!");
+                alert("Por favor, selecciona al menos un producto.");
                 return;
             }
 
-            message += "---------------------------------\n";
-            message += `💰 *TOTAL A PAGAR: $${total}*\n\n`;
-            message += "📍 *Dirección:* Calle 21, Caucasia\n";
-            message += "✅ _Pedido generado por App Vibras Positivas_";
+            let message = `🧾 *NUEVO PEDIDO - EMPANADAS LAS ZAPATA*\n`;
+            message += `__________________________\n\n`;
+            message += itemsText;
+            message += `__________________________\n`;
+            message += `💰 *TOTAL A PAGAR: $${total.toLocaleString()}*\n\n`;
+            message += `📍 *Ubicación:* Pista de patinaje, frente a La Estancia, Caucasia.\n\n`;
+            message += `⚡ _Enviado desde la App Oficial_`;
 
             const phone = "573206942230";
-            const url = `https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`;
-            window.open(url, '_blank');
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${encodeURIComponent(message)}`, '_blank');
         }
     </script>
 </body>
